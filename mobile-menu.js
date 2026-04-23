@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const toggle = document.querySelector('.mobile-menu-toggle');
       if (menu) {
         menu.classList.remove('active');
+        document.body.classList.remove('menu-open');
       }
       if (toggle) {
         toggle.innerHTML = '☰';
@@ -63,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const toggle = document.querySelector('.mobile-menu-toggle');
       if (menu && menu.classList.contains('active')) {
         menu.classList.remove('active');
+        document.body.classList.remove('menu-open');
         if (toggle) {
           toggle.innerHTML = '☰';
           toggle.setAttribute('aria-expanded', 'false');
@@ -72,5 +74,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
-
 

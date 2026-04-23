@@ -21,66 +21,33 @@
   outline-offset: 2px;
 }
 
-/* Mobile Menu Overlay - Styles moved to navbar.php for consistency */
-
-.mobile-menu li {
-  display: block;
-  width: 100%;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.mobile-menu li a {
-  display: block;
-  padding: 15px 20px;
-  width: 100%;
-  min-height: 50px;
-  font-size: 16px;
-}
-
-.mobile-menu .username {
-  display: block;
-  padding: 15px 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-/* Mobile Responsive Breakpoints */
+/* Responsive breakpoints */
 @media (max-width: 768px) {
-  /* Mobile Menu Toggle */
+  /* Show mobile menu toggle */
   .mobile-menu-toggle {
     display: block;
   }
   
-  /* Hide desktop nav items */
-  ul.navbar > div:first-child > li:not(:first-child):not(:nth-child(2)),
-  ul.navbar > div:last-child > li:not(:last-child) {
+  /* Hide desktop nav items but keep search visible */
+  .navbar-container > div:first-child > li:not(:first-child):not(:nth-child(2)) {
     display: none;
   }
   
-  /* Navbar adjustments */
-  ul.navbar, ul {
-    height: 60px;
-    padding: 0 10px;
-    padding-left: max(10px, env(safe-area-inset-left));
-    padding-right: max(10px, env(safe-area-inset-right));
-  }
-  
-  .logo {
-    height: 35px;
-  }
-  
-  /* Hide search on mobile (or make it collapsible) */
+  /* Ensure search is always visible on mobile */
   .nav-search {
-    display: none;
+    display: flex !important;
   }
-  
-  /* Touch-friendly links and buttons */
-  a, button, input[type="submit"], .btn {
+}
+
+/* Touch target optimization */
+@media (max-width: 768px) {
+  a, button, input[type="submit"], input[type="button"] {
     min-height: 44px;
     min-width: 44px;
-    -webkit-tap-highlight-color: rgba(207, 169, 103, 0.3);
+    touch-action: manipulation;
   }
   
-  /* Form inputs - prevent zoom on iOS */
+  /* Prevent iOS zoom on input focus */
   input[type="text"],
   input[type="email"],
   input[type="password"],
@@ -88,149 +55,15 @@
   input[type="tel"],
   textarea,
   select {
-    font-size: 16px !important; /* Prevents zoom on iOS */
-    padding: 12px;
-    min-height: 44px;
-  }
-  
-  /* Tables - make scrollable */
-  .table-container {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  table {
-    min-width: 600px;
-  }
-  
-  /* Cards and grids */
-  .gallery-grid,
-  .grid,
-  .wishlist-grid,
-  .related-grid {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 16px;
-  }
-  
-  /* Container padding */
-  .container,
-  .products-container {
-    padding: 15px 12px;
-    padding-top: 70px;
-  }
-  
-  /* Page titles */
-  .page-title,
-  .products-title {
-    font-size: 28px;
-    margin-bottom: 20px;
+    font-size: 16px !important;
   }
 }
 
-/* iPhone specific optimizations */
-@media (max-width: 480px) {
-  /* Single column layout for very small screens */
-  .gallery-grid,
-  .grid,
-  .wishlist-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  
-  /* Adjust navbar */
-  ul.navbar, ul {
-    height: 56px;
-  }
-  
-  .logo {
-    height: 32px;
-  }
-  
-  .mobile-menu {
-    top: 56px;
-  }
-  
-  /* Better spacing */
-  .container,
-  .products-container {
-    padding: 12px 10px;
-    padding-top: 66px;
-  }
-  
-  /* Smaller fonts on mobile */
-  .page-title,
-  .products-title {
-    font-size: 24px;
-  }
-  
-  /* Product cards */
-  .card img,
-  .alt-card img {
-    height: 200px;
-  }
-}
-
-/* iPhone X and newer - safe area support */
+/* Safe area insets for iPhone X and newer */
 @supports (padding: max(0px)) {
-  ul.navbar, ul {
-    padding-left: max(10px, env(safe-area-inset-left));
-    padding-right: max(10px, env(safe-area-inset-right));
-  }
-  
-  body {
-    padding-top: max(60px, calc(60px + env(safe-area-inset-top)));
-  }
-  
-  .mobile-menu {
-    padding-left: max(20px, env(safe-area-inset-left));
-    padding-right: max(20px, env(safe-area-inset-right));
-    top: calc(60px + env(safe-area-inset-top));
+  .navbar-container {
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
   }
 }
-
-/* Landscape orientation on mobile */
-@media (max-width: 768px) and (orientation: landscape) {
-  ul.navbar, ul {
-    height: 50px;
-  }
-  
-  .mobile-menu {
-    top: 50px;
-  }
-  
-  .container,
-  .products-container {
-    padding-top: 60px;
-  }
-}
-
-/* Prevent text size adjustment on iOS */
-html {
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Better touch targets */
-a, button {
-  touch-action: manipulation;
-}
-
-/* Fix iOS input zoom */
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="number"],
-input[type="tel"],
-input[type="search"],
-textarea,
-select {
-  font-size: 16px; /* Prevents zoom on iOS when focused */
-}
-
 
