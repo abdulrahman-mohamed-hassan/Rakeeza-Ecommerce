@@ -1,0 +1,40 @@
+@echo off
+echo ========================================
+echo Network Access Status Check
+echo ========================================
+echo.
+echo Checking your network configuration...
+echo.
+
+echo [1] Your IP Address:
+ipconfig | findstr /i "IPv4" | findstr /v "127.0.0.1"
+echo.
+
+echo [2] Your Computer Name:
+hostname
+echo.
+
+echo [3] Testing localhost access...
+curl -s -o nul -w "HTTP Status: %%{http_code}\n" http://localhost/project12 2>nul
+if errorlevel 1 (
+    echo WARNING: Could not connect to localhost
+    echo Make sure XAMPP Apache is running!
+) else (
+    echo Localhost is accessible
+)
+echo.
+
+echo ========================================
+echo.
+echo To access from other devices:
+echo.
+for /f "tokens=2 delims=:" %%a in ('ipconfig ^| findstr /i "IPv4" ^| findstr /v "127.0.0.1"') do (
+    set IP=%%a
+    set IP=!IP: =!
+    echo http://!IP!/project12
+)
+echo.
+echo ========================================
+pause
+
+
