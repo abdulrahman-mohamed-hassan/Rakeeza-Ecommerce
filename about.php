@@ -133,7 +133,7 @@ footer {
 
     <!-- IMAGE -->
     <div class="about-image">
-      <img src="assets/images/WhatsApp Image 2025-12-07 at 4.50.21 PM.jpeg" alt="About Us">
+      <img src="assets/images/Our logo.png" alt="About Us">
     </div>
 
   </div>
