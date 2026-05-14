@@ -1,0 +1,92 @@
+/*
+||--------------------------------------------------------------------------
+|| FILE: mobile-fixes.css
+||--------------------------------------------------------------------------
+|| PURPOSE: Global mobile fixes for touch scrolling, background, and overscroll
+||--------------------------------------------------------------------------
+*/
+
+/* Fix background movement on mobile */
+@media (max-width: 768px) {
+  /* Disable background-attachment: fixed on mobile (causes weird movement) */
+  body,
+  html {
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  /* Ensure mobile menu is not clipped */
+  body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+  
+  .mobile-menu {
+    overflow-x: visible !important;
+  }
+  
+  /* Fix for fixed background elements on mobile */
+  [style*="background-attachment: fixed"],
+  [style*="background-attachment:fixed"] {
+    background-attachment: scroll !important;
+    position: relative !important;
+  }
+  
+  /* Prevent content from moving with finger during scroll */
+  * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  /* Allow text selection in inputs and textareas */
+  input,
+  textarea,
+  [contenteditable] {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+  
+  /* Prevent pull-to-refresh on mobile */
+  body {
+    overscroll-behavior-y: contain;
+  }
+  
+  /* Fix for fixed position elements */
+  .navbar-container,
+  .mobile-menu {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}
+
+/* Additional iOS fixes */
+@supports (-webkit-touch-callout: none) {
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Fix for background images that move weirdly */
+.background-fixed-mobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+@media (max-width: 768px) {
+  .background-fixed-mobile {
+    position: absolute;
+    height: 100vh;
+    min-height: 100%;
+  }
+}
+
