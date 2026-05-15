@@ -24,3 +24,13 @@ Full-stack e-commerce website for furniture store built with PHP and MySQL.
 - **Frontend:** HTML5, CSS3, JavaScript, Bootstrap 5
 - **Email:** PHPMailer (SMTP)
 - **QR Code:** QR Code API
+
+## Team
+- Group Project | Team of 5
+
+## My Role
+- Database connectivity (MySQL)
+- Cart page functionality
+- Checkout page functionality
+- Email configuration (PHPMailer, SMTP, OTP verification)
+- Order confirmation emails to customers
