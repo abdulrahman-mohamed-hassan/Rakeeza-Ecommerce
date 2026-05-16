@@ -29,4 +29,4 @@ Full-stack e-commerce website for furniture store built with PHP and MySQL.
 - Group Project | Team of 5
 
 ## My Role
-- Backend Development (Database connectivity, Cart page, Checkout page, Email configuration, PHPMailer, SMTP, OTP, Order confirmations)
+- Backend Development (Database connectivity, Cart page, Checkout page, Email configuration, Order confirmations)
